@@ -2,32 +2,37 @@ import pyautogui
 import requests
 import time
 
-time.sleep(2)
+time.sleep(5)
 x = 0
 y = 0
 
-
-while(x <= 30):
-    x= x + 1
-    time.sleep(2)
-    response = requests.get('https://api.api-ninjas.com/v1/randomword', headers={'X-Api-Key':'7AGWVzVCrnWVPFK7cZEAxQ==yD9utGtt0zTHIlmE'})
+while x <= 30:
+    x += 1
+    time.sleep(4)
+    response = requests.get('https://api.api-ninjas.com/v1/randomword', headers={'X-Api-Key': '7AGWVzVCrnWVPFK7cZEAxQ==yD9utGtt0zTHIlmE'})
     data = response.json()
     pyautogui.hotkey('ctrl', 'e')
-    pyautogui.typewrite(data['word'])
+    
+    # Introduce delays between key presses to slow down the typing speed
+    for char in data['word']:
+        pyautogui.typewrite(char)
+        time.sleep(0.1)  # Adjust the sleep duration as needed
+
     pyautogui.press('enter')
     print(f"{y}: {data['word']}")
 
-
-pyautogui.hotkey('ctrl', 'shift','i')
-
-while(y <= 20):
+pyautogui.press('F12')
+while y <= 20:
     y += 1
-    time.sleep(2)
-    response = requests.get('https://api.api-ninjas.com/v1/randomword', headers={'X-Api-Key':'7AGWVzVCrnWVPFK7cZEAxQ==yD9utGtt0zTHIlmE'})
+    time.sleep(4)
+    response = requests.get('https://api.api-ninjas.com/v1/randomword', headers={'X-Api-Key': '7AGWVzVCrnWVPFK7cZEAxQ==yD9utGtt0zTHIlmE'})
     data = response.json()
     pyautogui.hotkey('ctrl', 'e')
-    pyautogui.typewrite(data['word'])
+    
+    # Introduce delays between key presses to slow down the typing speed
+    for char in data['word']:
+        pyautogui.typewrite(char)
+        time.sleep(0.1)  # Adjust the sleep duration as needed
+
     pyautogui.press('enter')
     print(f"{y}: {data['word']}")
-
-
